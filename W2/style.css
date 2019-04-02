@@ -78,13 +78,14 @@ ul li.done::before {
     margin-left: 20px;
     background-color: steelblue;
     color: white;
+    cursor: pointer;
     height: 400px;
     width: 40px;
     border: solid steelblue;
 }
 
 .button:hover{
-    background-color: orchid;
-    border: solid orchid;
+    background-color: rgb(223, 220, 60);
+    border: solid rgb(202, 226, 62);
     height: 100px;
 }
