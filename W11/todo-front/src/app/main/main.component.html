@@ -1,0 +1,22 @@
+TASK_LISTS:
+
+<ng-container *ngIf="!loading">
+	...Loading
+</ng-container>
+
+<ng-container *ngIf="loading">
+	<div>
+		<div *ngFor="let list of task_lists" (click)="getTasks(list)">{{list.id}} - {{list.name}}</div>
+	</div>
+</ng-container>
+
+<br/>
+TASKS:
+
+<div>
+	<div *ngFor="let task of tasks">{{task.id}} - {{task.name}} - {{task.created_at}} - {{task.due_on}}</div>
+</div>
+
+
+
+
