@@ -13,26 +13,26 @@ export class ProviderService extends MainService{
   }
 
   getTaskLists(): Promise<ITaskList[]>{
-  	return this.get('http://127.0.0.1:8000/api/task_lists/', {})
+  	return this.get('http://127.0.0.1:8000/api/task_list/', {})
   }
 
   getTasks(task_list: ITaskList): Promise<ITask[]>{
-  	return this.get(`http://127.0.0.1:8000/api/task_lists/${task_list.id}/tasks`, {})
+  	return this.get(`http://127.0.0.1:8000/api/task_list/${task_list.id}/tasks`, {})
   }
 
   createTaskList(name: String): Promise<ITaskList>{
-    return this.post('http://127.0.0.1:8000/api/task_lists/', {
+    return this.post('http://127.0.0.1:8000/api/task_list/', {
       name: name
     })
   } 
 
   updateTaskList(task_list: ITaskList){
-    return this.put(`http://127.0.0.1:8000/api/task_lists/${task_list.id}/`, {
+    return this.put(`http://127.0.0.1:8000/api/task_list/${task_list.id}/`, {
       name: task_list.name
     })
   }
 
   deleteTaskList(id: number){
-    return this.delet(`http://127.0.0.1:8000/api/task_lists/${id}`, {})
+    return this.delet(`http://127.0.0.1:8000/api/task_list/${id}`, {})
   }
 }

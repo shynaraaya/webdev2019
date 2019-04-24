@@ -1,0 +1,11 @@
+{% extends 'base.html'%}
+{%block body %}
+   <ul>
+    {%for list in lists%}
+       <li>{{list.id}}: {{list.name}}</li>
+
+    {%endfor%}
+   </ul>
+
+
+{% endblock %}

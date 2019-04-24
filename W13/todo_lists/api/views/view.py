@@ -1,13 +1,12 @@
 import json
-from django.shortcuts import render
-from django.http import  HttpResponse, JsonResponse
+
+from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import Task
-from .models import TaskList
-from django.views import View
-from .serializers import TaskListSerializer, TaskListSerializer2, TaskSerializer
 
-
+from api.models import TaskList
+from api.serializers import TaskListSerializer, TaskListSerializer2, TaskSerializer
+from rest_framework.request import Request
+from rest_framework.response import Response
 
 
 @csrf_exempt
@@ -18,12 +17,12 @@ def show_lists(request):
         return JsonResponse(serializer.data, safe=False)
     elif request.method == 'POST':
         data = json.loads(request.body)
-        serializer = TaskListSerializer(data=data)
+        serializer = TaskListSerializer2(data=data)
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data)
         return JsonResponse(serializer.errors)
-    return JsonResponse({'error': 'bad request'})
+    return JsonResponse({'error': 'bad request'});
 
 
 @csrf_exempt
@@ -61,4 +60,5 @@ def task_list_detail_task(request, pk):
     tasks = li.task_set.all()
     serializer = TaskSerializer(tasks, many=True)
     return JsonResponse(serializer.data, safe=False)
+
 
